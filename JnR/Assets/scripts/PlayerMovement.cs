@@ -62,8 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 doublejump = false;
             }
         }
-
-        moveDirection.y -= gravity * Time.deltaTime;
+        if(!characterController.isGrounded) moveDirection.y -= gravity * Time.deltaTime;
         moveDirection.x = velocity * Time.deltaTime;
         if (velocity > 0)
             lookRight = true;
