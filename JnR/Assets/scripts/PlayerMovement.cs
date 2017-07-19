@@ -32,22 +32,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input();
-        moving();
-        setAnimation();
+        Input();
+        Moving();
+        SetAnimation();
     }
 
-    public void input()
+    public void Input()
     {
-        velocity = Input.GetAxis("Horizontal") * speed;
+        velocity = UnityEngine.Input.GetAxis("Horizontal") * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             jump = true;
         else
             jump = false;
     }
 
-    public void moving()
+    public void Moving()
     {
         if (characterController.isGrounded) doublejump = true;
         if (characterController.isGrounded || doublejump)
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(moveDirection);
     }
 
-    public void setAnimation()
+    public void SetAnimation()
     {
         
         if (velocity > 0)
