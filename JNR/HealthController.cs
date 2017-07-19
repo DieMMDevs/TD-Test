@@ -1,34 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class HealthController : MonoBehaviour
-{
+public class HealthController : MonoBehaviour {
     public float health = 10;
     public int life = 3;
+    public Vector3 playerposition;
     public float seconds = 1;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 
     public void DamageTaken(float damage)
     {
-        if (health > 0)
+        if(health > 0)
         {
             health -= damage;
-            if (health <= 0)
+            if(health <= 0)
             {
-                if (life > 0)
+                if(life > 0)
                 {
                     life--;
                     RestartLevel();
@@ -44,9 +41,7 @@ public class HealthController : MonoBehaviour
 
     void RestartLevel()
     {
-        //Application.LoadLevel(Application.loadedLevel);
-
-        SceneManager.LoadScene("main", LoadSceneMode.Single);
+        Application.LoadLevel(Application.loadedLevel);
 
         //UnityEngine.SceneManagement.SceneManager.LoadScene();
     }
