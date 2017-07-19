@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     bool doublejump = true;
     public float jumpFactor = 20;
 
+    private int count;
+    public Text countText;
+
     public Vector3 moveDirection = Vector3.zero;
     public CharacterController characterController;
     public PlayerAnimations playerAnimations;
@@ -21,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerAnimations = GetComponent<PlayerAnimations>();
+        count = 0;
+        SetCountText();
     }
 
     // Update is called once per frame
@@ -96,5 +102,19 @@ public class PlayerMovement : MonoBehaviour
             } 
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+            count++;
+            SetCountText();
+        }
+    }
+    void SetCountText()
+    {
+        countText.text = "Punkte: " + count.ToString();
     }
 }
