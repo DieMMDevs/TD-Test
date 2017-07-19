@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool lookRight = true;
     bool jump = false;
     bool doublejump = true;
+    bool attack = false;
     public float jumpFactor = 20;
 
     private int count;
@@ -45,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
         else
             jump = false;
+        if (UnityEngine.Input.GetKey(KeyCode.RightControl))
+            attack = true;
+        else
+            attack = false;
     }
 
     public void Moving()
@@ -77,12 +82,16 @@ public class PlayerMovement : MonoBehaviour
         
         if (velocity > 0)
         {
+            if(attack == true)
+                playerAnimations.currAnimation = PlayerAnimations.AniType.attackRight;
             playerAnimations.currAnimation = PlayerAnimations.AniType.runRight;
             if (!characterController.isGrounded)
                 playerAnimations.currAnimation = PlayerAnimations.AniType.jumpRight;
         }
         if (velocity < 0)
         {
+            if (attack == true)
+                playerAnimations.currAnimation = PlayerAnimations.AniType.attackLeft;
             playerAnimations.currAnimation = PlayerAnimations.AniType.runLeft;
             if (!characterController.isGrounded)
                 playerAnimations.currAnimation = PlayerAnimations.AniType.jumpLeft;
@@ -91,11 +100,15 @@ public class PlayerMovement : MonoBehaviour
         {
             if (lookRight)
             {
+                if (attack == true)
+                    playerAnimations.currAnimation = PlayerAnimations.AniType.attackRight;
                 playerAnimations.currAnimation = PlayerAnimations.AniType.idleRight;
                 if (!characterController.isGrounded) playerAnimations.currAnimation = PlayerAnimations.AniType.jumpRight;
             }
             else
             {
+                if (attack == true)
+                    playerAnimations.currAnimation = PlayerAnimations.AniType.attackLeft;
                 playerAnimations.currAnimation = PlayerAnimations.AniType.idleLeft;
                 if (!characterController.isGrounded) playerAnimations.currAnimation = PlayerAnimations.AniType.jumpLeft;
             } 
