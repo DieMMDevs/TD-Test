@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 1889478562}
   - component: {fileID: 1889478567}
   - component: {fileID: 1889478568}
+  - component: {fileID: 1889478569}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1207,10 +1208,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889478561}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -1285,6 +1286,20 @@ MonoBehaviour:
   - {x: 15, y: 1.5, z: 0}
   - {x: 25, y: 1.5, z: 0}
   playerAnimations: {fileID: 0}
+--- !u!114 &1889478569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889478561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffcc6520cea6b14aa049e1b6e585c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagevalue: 1
+  tag: Player
+  healthcontroller: {fileID: 0}
 --- !u!1001 &1957662433
 Prefab:
   m_ObjectHideFlags: 0
@@ -1347,9 +1362,10 @@ GameObject:
   - component: {fileID: 2057570029}
   - component: {fileID: 2057570028}
   - component: {fileID: 2057570031}
+  - component: {fileID: 2057570032}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1445,7 +1461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 1
   speed: 6
-  jumpFactor: 30
+  jumpFactor: 15
   countText: {fileID: 1048737945}
   moveDirection: {x: 0, y: 0, z: 0}
   characterController: {fileID: 0}
@@ -1512,6 +1528,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2057570032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2057570023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d820b072409fb42b01481881823867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  life: 3
+  playerposition: {x: 0, y: 0, z: 0}
+  seconds: 1
 --- !u!1001 &2069838087
 Prefab:
   m_ObjectHideFlags: 0
