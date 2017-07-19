@@ -9,6 +9,9 @@ public class PlayerAnimations : MonoBehaviour {
     public List<Texture2D> runAnimationLeft;
     public List<Texture2D> jumpAnimationRight;
     public List<Texture2D> jumpAnimationLeft;
+    public List<Texture2D> attackAnimationRight;
+    public List<Texture2D> attackAnimationLeft;
+
 
     public float speed = 10;
 
@@ -19,7 +22,9 @@ public class PlayerAnimations : MonoBehaviour {
         runLeft,
         runRight,
         jumpLeft,
-        jumpRight
+        jumpRight,
+        attackRight,
+        attackLeft
     }
 
     public AniType currAnimation = AniType.idleRight;
@@ -49,6 +54,12 @@ public class PlayerAnimations : MonoBehaviour {
                 break;
             case AniType.jumpRight:
                 setAnimation(jumpAnimationRight);
+                break;
+            case AniType.attackRight:
+                setAnimation(attackAnimationRight);
+                break;
+            case AniType.attackLeft:
+                setAnimation(attackAnimationLeft);
                 break;
         }
 	}
