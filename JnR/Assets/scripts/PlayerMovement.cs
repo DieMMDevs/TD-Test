@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5;
     bool lookRight = true;
     bool jump = false;
+    bool doublejump = true;
     public float jumpFactor = 20;
 
     public Vector3 moveDirection = Vector3.zero;
@@ -42,11 +43,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void moving()
     {
-        if (characterController.isGrounded)
+        if (characterController.isGrounded) doublejump = true;
+        if (characterController.isGrounded || doublejump)
         {
-            if (jump)
+            if (jump && characterController.isGrounded)
             {
                 moveDirection.y = jumpFactor * Time.deltaTime;
+            }
+            if(jump && doublejump && !characterController.isGrounded)
+            {
+                moveDirection.y = jumpFactor * Time.deltaTime;
+                doublejump = false;
             }
         }
 
